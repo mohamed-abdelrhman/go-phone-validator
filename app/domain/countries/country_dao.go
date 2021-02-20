@@ -27,7 +27,7 @@ func (country *Country)Get() *errors.RestErr {
 	result:=stmt.QueryRow(country.ID)
 	if err:= result.Scan(&country.ID,&country.Name,&country.CountryCode,&country.Regex);err!=nil {
 		logger.Error("error where trying get query row country ",err)
-		return  errors.NewInternalServerError("Database parsing error")	}
+		return  errors.NewInternalServerError("No Such Country")	}
 	return  nil
 }
 func (country *Country)GetAll(pageNo int64)([]Country, *errors.RestErr){

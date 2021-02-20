@@ -86,8 +86,10 @@ func (s *customerServices) UpdateCustomer(isPartial bool,customer customers.Cust
 
 	// get country
 	country:=&countries.Country{ID: customer.CountryID}
+
 	if err:=country.Get();err!=nil{
-		return nil,err
+		 return nil,err
+
 	}
 	// validate phone regex
 	reg := regexp.MustCompile(country.Regex)

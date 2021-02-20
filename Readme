@@ -1,0 +1,11 @@
+To Start the GoLang APP
+
+## open the project Directory and run
+docker build . --tag golang:phoneValidator
+then
+docker run -it -p 3000:3000 golang:phoneValidator
+
+##postman collection
+
+https://www.getpostman.com/collections/0e4534c1247ceadd3113
+

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b630a4d-d6bc-4b30-8925-97a7b4bfe426" name="Default Changelist" comment="" />
+    <list default="true" id="5b630a4d-d6bc-4b30-8925-97a7b4bfe426" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/domain/countries/country_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/domain/countries/country_dao.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasources/sqlite/sample_db/sample.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasources/sqlite/sample_db/sample.go" beforeDir="false" afterPath="$PROJECT_DIR$/datasources/sqlite/sample_db/sample.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/customers_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/customers_service.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,6 +81,10 @@
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
     <state x="824" y="416" key="#Go_Modules/0.0.2048.1152@0.0.2048.1152" timestamp="1613780944694" />
+    <state x="756" y="381" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1613847733363">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state x="756" y="381" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1152@0.0.2048.1152" timestamp="1613847733363" />
     <state width="2006" height="388" key="GridCell.Tab.0.bottom" timestamp="1613830420389">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
@@ -110,5 +121,9 @@
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
     <state x="100" y="100" width="1848" height="952" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2048.1152@0.0.2048.1152" timestamp="1613824332718" />
+    <state x="689" y="259" width="670" height="676" key="search.everywhere.popup" timestamp="1613848449016">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state x="689" y="259" width="670" height="676" key="search.everywhere.popup/0.0.2048.1152@0.0.2048.1152" timestamp="1613848449016" />
   </component>
 </project>
