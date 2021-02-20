@@ -1,9 +1,9 @@
 package services
 
 import (
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/domain/countries"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/domain/customers"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
+	"github.com/mohamed-abdelrhman/go-phone-validator/app/domain/countries"
+	"github.com/mohamed-abdelrhman/go-phone-validator/app/domain/customers"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/errors"
 	"regexp"
 )
 
@@ -38,7 +38,7 @@ func (s *customerServices) GetAllCustomers(pageNo int64)(customers.Customers, *e
 
 func (s *customerServices) FilterCustomers(customer customers.FilterCustomer,pageNo int64)(customers.Customers, *errors.RestErr)  {
 
-	dao:=customers.Customer{}
+	dao:= customers.Customer{}
 	return dao.Filter(customer,pageNo)
 }
 
@@ -103,7 +103,7 @@ func (s *customerServices) UpdateCustomer(isPartial bool,customer customers.Cust
 	return current,nil
 }
 
-func (s *customerServices) DeleteCustomer(customerID int64)*errors.RestErr  {
+func (s *customerServices) DeleteCustomer(customerID int64)*errors.RestErr {
 	customer:=&customers.Customer{ID: customerID}
 	return customer.Delete()
 }

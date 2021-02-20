@@ -2,7 +2,7 @@ package app
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/logger"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/logger"
 )
 
 var (

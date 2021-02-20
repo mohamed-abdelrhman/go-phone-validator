@@ -2,8 +2,8 @@ package countries
 
 import (
 	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/sqlite/sample_db"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/logger"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/errors"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/logger"
 )
 
 const(
@@ -34,12 +34,12 @@ func (country *Country)GetAll(pageNo int64)([]Country, *errors.RestErr){
 	stmt, err :=sample_db.SqliteClient.Prepare(queryGetAllCountry)
 	if err != nil {
 		logger.Error("error where trying All find countries ",err)
-		return nil,errors.NewInternalServerError("Database parsing error")
+		return nil, errors.NewInternalServerError("Database parsing error")
 	}
 	defer stmt.Close()
-	rows,err:=stmt.Query(pageLimit*(pageNo-1),pageLimit)
+	rows,err:=stmt.Query(pageLimit*(pageNo-1), pageLimit)
 	if err != nil {
-		return nil,errors.NewInternalServerError("Database parsing error")
+		return nil, errors.NewInternalServerError("Database parsing error")
 	}
 	defer rows.Close()
 	results:=make([]Country,0)
@@ -47,12 +47,12 @@ func (country *Country)GetAll(pageNo int64)([]Country, *errors.RestErr){
 		var country Country
 		if err :=rows.Scan(&country.ID,&country.Name,&country.CountryCode,&country.Regex);err!=nil{
 			logger.Error("error where trying to find All Countries ",err)
-			return nil,errors.NewInternalServerError("Database parsing error")
+			return nil, errors.NewInternalServerError("Database parsing error")
 		}
 		results=append(results,country)
 	}
 	if len(results)==0 {
-		return  nil,errors.NewNotFoundError("no Countries Found")
+		return  nil, errors.NewNotFoundError("no Countries Found")
 	}
 	return results,nil
 
@@ -61,7 +61,7 @@ func (country *Country)GetAll(pageNo int64)([]Country, *errors.RestErr){
 }
 
 
-func (country *Country)Save() *errors.RestErr  {
+func (country *Country)Save() *errors.RestErr {
 	stmt,err := sample_db.SqliteClient.Prepare(queryInsertCountry)
 	if err != nil {
 		logger.Error("error where trying get prepare country stmt",err)
@@ -82,7 +82,7 @@ func (country *Country)Save() *errors.RestErr  {
 	return nil
 }
 
-func (country *Country)Update()*errors.RestErr  {
+func (country *Country)Update()*errors.RestErr {
 
 	stmt,err:= sample_db.SqliteClient.Prepare(queryUpdateCountry)
 	if err != nil {
@@ -99,7 +99,7 @@ func (country *Country)Update()*errors.RestErr  {
 	return nil
 }
 
-func (country *Country)Delete()*errors.RestErr  {
+func (country *Country)Delete()*errors.RestErr {
 
 	stmt,err:= sample_db.SqliteClient.Prepare(queryDeleteCountry)
 	if err != nil {

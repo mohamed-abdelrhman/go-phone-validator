@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/domain/countries"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
+	"github.com/mohamed-abdelrhman/go-phone-validator/app/domain/countries"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/errors"
 )
 
 var(
@@ -71,7 +71,7 @@ func (s *countryServices) UpdateCountry(isPartial bool,country countries.Country
 
 }
 
-func (s *countryServices) DeleteCountry(countryID int64)*errors.RestErr  {
+func (s *countryServices) DeleteCountry(countryID int64)*errors.RestErr {
 	country:=&countries.Country{ID: countryID}
 	return country.Delete()
 }

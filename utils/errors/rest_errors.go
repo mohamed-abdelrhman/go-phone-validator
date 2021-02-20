@@ -15,14 +15,14 @@ func NewError(msg string)error  {
 return errors.New(msg)
 }
 
-func NewBadRequestError(message string)*RestErr  {
+func NewBadRequestError(message string)*RestErr {
 	return &RestErr{
 		Message: message,
 		Status:    http.StatusBadRequest,
 		Error:   "Bad Request",
 	}
 }
-func NewNotFoundError(message string)*RestErr  {
+func NewNotFoundError(message string)*RestErr {
 	return &RestErr{
 		Message: message,
 		Status:    http.StatusNotFound,
@@ -30,7 +30,7 @@ func NewNotFoundError(message string)*RestErr  {
 	}
 }
 
-func NewInternalServerError(message string)*RestErr  {
+func NewInternalServerError(message string)*RestErr {
 	return &RestErr{
 		Message: message,
 		Status:    http.StatusInternalServerError,

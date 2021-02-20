@@ -2,11 +2,11 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/domain/customers"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/services"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/logger"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/strings_utils"
+	"github.com/mohamed-abdelrhman/go-phone-validator/app/domain/customers"
+	"github.com/mohamed-abdelrhman/go-phone-validator/services"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/errors"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/logger"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/strings_utils"
 	"log"
 	"net/http"
 	"strconv"
@@ -31,7 +31,7 @@ type customerControllerInterface interface {
 func (co *customerControllers)Create(c *gin.Context)  {
 	var customer customers.Customer
 	if err:=c.ShouldBindJSON(&customer);err!=nil{
-		restErr:=errors.NewBadRequestError("Invalid Form Body")
+		restErr:= errors.NewBadRequestError("Invalid Form Body")
 		logger.Error("error Binding save request",err)
 		c.JSON(restErr.Status,restErr)
 		return
@@ -79,7 +79,7 @@ func  (co *customerControllers)Filter(c *gin.Context)  {
 	}
 	var customer customers.FilterCustomer
 	if err:=c.ShouldBindJSON(&customer);err!=nil{
-		restErr:=errors.NewBadRequestError("Invalid Form Body")
+		restErr:= errors.NewBadRequestError("Invalid Form Body")
 		logger.Error("error Binding save request",err)
 		c.JSON(restErr.Status,restErr)
 		return
@@ -102,7 +102,7 @@ func  (co *customerControllers)Update(c *gin.Context)  {
 	}
 	var customer customers.Customer
 	if  err:=c.ShouldBindJSON(&customer);err !=nil{
-		restErr:=errors.NewBadRequestError("Invalid json body")
+		restErr:= errors.NewBadRequestError("Invalid json body")
 		c.JSON(restErr.Status,restErr)
 		return
 	}

@@ -3,8 +3,8 @@ package customers
 import (
 	"database/sql"
 	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/sqlite/sample_db"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/logger"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/errors"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/logger"
 	"strconv"
 )
 
@@ -40,12 +40,12 @@ func (customer *Customer)GetAll(pageNo int64)([]Customer, *errors.RestErr){
 	stmt, err :=sample_db.SqliteClient.Prepare(queryGetAllCustomer)
 	if err != nil {
 		logger.Error("error where trying All find customers ",err)
-		return nil,errors.NewInternalServerError("Database parsing error")
+		return nil, errors.NewInternalServerError("Database parsing error")
 	}
 	defer stmt.Close()
-	rows,err:=stmt.Query(pageLimit*(pageNo-1),pageLimit)
+	rows,err:=stmt.Query(pageLimit*(pageNo-1), pageLimit)
 	if err != nil {
-		return nil,errors.NewInternalServerError("Database parsing error")
+		return nil, errors.NewInternalServerError("Database parsing error")
 
 	}
 	defer rows.Close()
@@ -54,12 +54,12 @@ func (customer *Customer)GetAll(pageNo int64)([]Customer, *errors.RestErr){
 		var customer Customer
 		if err :=rows.Scan(&customer.ID,&customer.Name,&customer.Phone, &customer.CountryID, &customer.Valid);err!=nil{
 			logger.Error("error where trying to find All Customers ",err)
-			return nil,errors.NewInternalServerError("Database parsing error")
+			return nil, errors.NewInternalServerError("Database parsing error")
 		}
 		results=append(results,customer)
 	}
 	if len(results)==0 {
-		return  nil,errors.NewNotFoundError("no Customers Found")
+		return  nil, errors.NewNotFoundError("no Customers Found")
 	}
 	return results,nil
 
@@ -86,26 +86,26 @@ func (customer *Customer)Filter(filterCustomer FilterCustomer, pageNo int64)([]C
 
 	if err != nil {
 		logger.Error("error where trying All find customers ",err)
-		return nil,errors.NewInternalServerError("Database parsing error")
+		return nil, errors.NewInternalServerError("Database parsing error")
 	}
 	defer stmt.Close()
 
 	var rows *sql.Rows
 
 	if filterCustomer.CountryID != 0 && parsValidErr == nil {
-		rows,err=stmt.Query(filterCustomer.CountryID,customer.Valid,pageLimit*(pageNo-1),pageLimit)
+		rows,err=stmt.Query(filterCustomer.CountryID,customer.Valid, pageLimit*(pageNo-1), pageLimit)
 	}else if filterCustomer.CountryID == 0 && parsValidErr != nil {
-		rows,err=stmt.Query(pageLimit*(pageNo-1),pageLimit)
+		rows,err=stmt.Query(pageLimit*(pageNo-1), pageLimit)
 	}else if  filterCustomer.CountryID == 0 && parsValidErr == nil {
-		rows,err=stmt.Query(customer.Valid,pageLimit*(pageNo-1),pageLimit)
+		rows,err=stmt.Query(customer.Valid, pageLimit*(pageNo-1), pageLimit)
 	}else if  filterCustomer.CountryID != 0 && parsValidErr != nil {
-		rows,err=stmt.Query(filterCustomer.CountryID,pageLimit*(pageNo-1),pageLimit)
+		rows,err=stmt.Query(filterCustomer.CountryID, pageLimit*(pageNo-1), pageLimit)
 	}
 
 
 
 	if err != nil {
-		return nil,errors.NewInternalServerError("Database parsing error")
+		return nil, errors.NewInternalServerError("Database parsing error")
 	}
 	defer rows.Close()
 	results:=make([]Customer,0)
@@ -113,12 +113,12 @@ func (customer *Customer)Filter(filterCustomer FilterCustomer, pageNo int64)([]C
 		var customer Customer
 		if err :=rows.Scan(&customer.ID,&customer.Name,&customer.Phone, &customer.CountryID, &customer.Valid);err!=nil{
 			logger.Error("error where trying to find All Customers ",err)
-			return nil,errors.NewInternalServerError("Database parsing error")
+			return nil, errors.NewInternalServerError("Database parsing error")
 		}
 		results=append(results,customer)
 	}
 	if len(results)==0 {
-		return  nil,errors.NewNotFoundError("no Customers Found")
+		return  nil, errors.NewNotFoundError("no Customers Found")
 	}
 	return results,nil
 
@@ -126,7 +126,7 @@ func (customer *Customer)Filter(filterCustomer FilterCustomer, pageNo int64)([]C
 
 }
 
-func (customer *Customer)Save() *errors.RestErr  {
+func (customer *Customer)Save() *errors.RestErr {
 	stmt,err := sample_db.SqliteClient.Prepare(queryInsertCustomer)
 	if err != nil {
 		logger.Error("error where trying get prepare customer stmt",err)
@@ -147,7 +147,7 @@ func (customer *Customer)Save() *errors.RestErr  {
 	return nil
 }
 
-func (customer *Customer)Update()*errors.RestErr  {
+func (customer *Customer)Update()*errors.RestErr {
 
 	stmt,err:= sample_db.SqliteClient.Prepare(queryUpdateCustomer)
 	if err != nil {
@@ -164,7 +164,7 @@ func (customer *Customer)Update()*errors.RestErr  {
 	return nil
 }
 
-func (customer *Customer)Delete()*errors.RestErr  {
+func (customer *Customer)Delete()*errors.RestErr {
 
 	stmt,err:= sample_db.SqliteClient.Prepare(queryDeleteCustomer)
 	if err != nil {

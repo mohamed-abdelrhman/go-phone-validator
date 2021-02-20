@@ -1,7 +1,7 @@
 package customers
 
 import (
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/errors"
 	"strings"
 )
 
@@ -23,7 +23,7 @@ type FilterCustomer struct {
 }
 type Customers []Customer
 
-func ( customer *Customer) Validate() *errors.RestErr  {
+func ( customer *Customer) Validate() *errors.RestErr {
 	customer.Name=strings.TrimSpace(strings.ToLower(customer.Name))
 	customer.Phone=strings.TrimSpace(strings.ToLower(customer.Phone))
 	//validate Inputs

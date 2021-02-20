@@ -2,11 +2,11 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/domain/countries"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/services"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/logger"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/strings_utils"
+	"github.com/mohamed-abdelrhman/go-phone-validator/app/domain/countries"
+	"github.com/mohamed-abdelrhman/go-phone-validator/services"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/errors"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/logger"
+	"github.com/mohamed-abdelrhman/go-phone-validator/utils/strings_utils"
 	"net/http"
 	"strconv"
 )
@@ -27,7 +27,7 @@ type countryCountryInterface interface {
 func  (co *countryControllers)Create(c *gin.Context)  {
 	var country countries.Country
 	if err:=c.ShouldBindJSON(&country);err!=nil{
-		restErr:=errors.NewBadRequestError("Invalid Form Body")
+		restErr:= errors.NewBadRequestError("Invalid Form Body")
 		logger.Error("error Binding save request",err)
 		c.JSON(restErr.Status,restErr)
 		return
@@ -77,7 +77,7 @@ func (co *countryControllers)Update(c *gin.Context)  {
 	}
 	var country countries.Country
 	if  err:=c.ShouldBindJSON(&country);err !=nil{
-		restErr:=errors.NewBadRequestError("Invalid json body")
+		restErr:= errors.NewBadRequestError("Invalid json body")
 		c.JSON(restErr.Status,restErr)
 		return
 	}
