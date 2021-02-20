@@ -17,7 +17,12 @@ RUN go mod download
 
 # Copy the code into the container
 COPY . .
-COPY ./sample.db  ./sample.db
+COPY ./datasources/sqlite/sample_db/sample.db  ./datasources/sqlite/sample_db/sample.db
+COPY ./datasources/sqlite/sample_db/customers.json  ./datasources/sqlite/sample_db/customers.json
+COPY ./datasources/sqlite/sample_db/countries.json  ./datasources/sqlite/sample_db/countries.json
+#COPY ./sample.db  ./dist/sample.db
+#COPY ./sample.db  ./build/sample.db
+#COPY ./sample.db  ./build/main/sample.db
 #RUN rm -rf ./datasources/sqlite/sample_db/sample.d
 
 # Build the application
