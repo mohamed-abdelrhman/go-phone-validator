@@ -19,7 +19,6 @@ var(
 
 type customerControllers struct {}
 type customerControllerInterface interface {
-	Get(*gin.Context)
 	GetAll(*gin.Context)
 	Filter(*gin.Context)
 	Create(*gin.Context)
@@ -44,7 +43,7 @@ func (co *customerControllers)Create(c *gin.Context)  {
 	c.JSON(http.StatusCreated,result.Marshall())
 }
 
-func  (co *customerControllers)Get(c *gin.Context)  {
+func  Get(c *gin.Context)  {
 	customerID,idErr:= strings_utils.ParseId(c.Param("customer_id"),"customer Id")
 	if idErr!=nil {
 		c.JSON(idErr.Status,idErr)

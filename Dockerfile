@@ -2,10 +2,11 @@ FROM golang:alpine AS builder
 
 # Set necessary environmet variables needed for our image
 ENV GO111MODULE=on \
-    CGO_ENABLED=0 \
+    CGO_ENABLED=1 \
     GOOS=linux \
     GOARCH=amd64
 
+RUN apk add gcc g++
 # Move to working directory /build
 WORKDIR /build
 
@@ -16,7 +17,8 @@ RUN go mod download
 
 # Copy the code into the container
 COPY . .
-COPY ./datasources/sqlite/sample_db/sample.db  ./datasources/sqlite/sample_db/sample.db
+COPY ./sample.db  ./sample.db
+#RUN rm -rf ./datasources/sqlite/sample_db/sample.d
 
 # Build the application
 RUN go build -o main .
@@ -28,9 +30,10 @@ WORKDIR /dist
 RUN cp /build/main .
 
 # Build a small image
-FROM scratch
+#FROM scratch
 
-COPY --from=builder /dist/main /
+#COPY --from=builder /dist/main /
+RUN cp -r /dist/main /
 
 # Command to run
 ENTRYPOINT ["/main"]

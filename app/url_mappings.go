@@ -5,7 +5,7 @@ import "github.com/mohamed-abdelrhman/go-phone-validator/controllers"
 func mapUrls()  {
 	router.GET("/ping", controllers.Ping)
 
-	router.GET("/customers/:customer_id", controllers.CustomerControllers.Get)
+	router.GET("/customers/:customer_id", controllers.Get)
 	router.GET("/customers", controllers.CustomerControllers.GetAll)
 	router.POST("/customers/filter", controllers.CustomerControllers.Filter)
 	router.POST("/customers", controllers.CustomerControllers.Create)
