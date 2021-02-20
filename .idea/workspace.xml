@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5b630a4d-d6bc-4b30-8925-97a7b4bfe426" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/domain/countries/country_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/domain/countries/country_dao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasources/sqlite/sample_db/sample.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasources/sqlite/sample_db/sample.go" beforeDir="false" afterPath="$PROJECT_DIR$/datasources/sqlite/sample_db/sample.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/customers_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/customers_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme" beforeDir="false" afterPath="$PROJECT_DIR$/Readme" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

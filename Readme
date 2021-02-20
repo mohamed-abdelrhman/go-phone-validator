@@ -9,3 +9,20 @@ docker run -it -p 3000:3000 golang:phoneValidator
 
 https://www.getpostman.com/collections/0e4534c1247ceadd3113
 
+
+##Why i took this approach for creating this validator
+## if i have database with data and i want to return the validated data,there is two solutions for this.
+
+A- validate the returned data on the runtime
+B-perform operations on the database then flag each record with valid or not valid then return normal git or list operations
+and you would escape  N+ operations and unnecessary loops to validate the data.
+
+I took the second approach so the app can perform better on the run time and created the regex to validate the new inputs
+for example if new customer want to add his phone number he/she gonna choose there country of residence from there i am gonna get the regex and update the phone number
+record with status valid or not valid
+
+that's  why i created the full crud operations for the customers module and for the countries module
+
+then in the end point filter
+localhost:3000/customers/filter
+it can take country_id or status(valid) or both or neither and it will filter the data accordingly
