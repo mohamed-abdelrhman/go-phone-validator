@@ -15,12 +15,12 @@ var(
 
 
 func init()  {
-	file, err := os.Create("./datasources/sqlite/sample_db/sample.db") // Create SQLite file
+	file, err := os.Create("/build/datasources/sqlite/sample_db/sample.db") // Create SQLite file
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 	file.Close()
-	SqliteClient, _ = sql.Open("sqlite3", "./datasources/sqlite/sample_db/sample.db") // Open the created SQLite File
+	SqliteClient, _ = sql.Open("sqlite3", "/build/datasources/sqlite/sample_db/sample.db") // Open the created SQLite File
 	createCountriesTable(SqliteClient) // Create Database Tables
 	createCustomersTable(SqliteClient) // Create Database Tables
 }
@@ -50,7 +50,7 @@ func createCustomersTable(db *sql.DB) {
 		CountryID int `json:"country_id"`
 		Valid bool `json:"valid"`
 	}
-	plan, readErr:= ioutil.ReadFile("./datasources/sqlite/sample_db/customers.json")
+	plan, readErr:= ioutil.ReadFile("/build/datasources/sqlite/sample_db/customers.json")
 	if readErr != nil {
 		log.Println(readErr)
 	}
@@ -79,8 +79,8 @@ func createCountriesTable(db *sql.DB) {
 	if err != nil {
 		return
 	}
-		statement.Exec() // Execute SQL Statements
-		log.Println("countries table created")
+	statement.Exec() // Execute SQL Statements
+	log.Println("countries table created")
 	//populate customer table
 	type country struct {
 		ID          int64  `json:"id"`
@@ -88,7 +88,7 @@ func createCountriesTable(db *sql.DB) {
 		CountryCode string `json:"country_code"`
 		Regex       string `json:"regex"`
 	}
-	plan, readErr:= ioutil.ReadFile("./datasources/sqlite/sample_db/countries.json")
+	plan, readErr:= ioutil.ReadFile("/build/datasources/sqlite/sample_db/countries.json")
 	if readErr != nil {
 		log.Println(readErr)
 	}
