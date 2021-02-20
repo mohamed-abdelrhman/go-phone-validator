@@ -15,14 +15,14 @@ var(
 
 
 func init()  {
-	if _, err := os.Stat("./datasources/sqlite/sample_db/sample.db"); os.IsNotExist(err) {
-		file, err := os.Create("./datasources/sqlite/sample_db/sample.db") // Create SQLite file
+	if _, err := os.Stat("./sample.db"); os.IsNotExist(err) {
+		file, err := os.Create("./sample.db") // Create SQLite file
 		if err != nil {
 			log.Fatal(err.Error())
 		}
 		file.Close()
 	}
-	SqliteClient, _ = sql.Open("sqlite3", "./datasources/sqlite/sample_db/sample.db") // Open the created SQLite File
+	SqliteClient, _ = sql.Open("sqlite3", "./sample.db") // Open the created SQLite File
 	createCountriesTable(SqliteClient) // Create Database Tables
 	createCustomersTable(SqliteClient) // Create Database Tables
 }
