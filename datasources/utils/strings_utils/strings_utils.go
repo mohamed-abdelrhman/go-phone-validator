@@ -1,7 +1,7 @@
 package strings_utils
 
 import (
-	"github.com/mohamed-abdelrhman/phoneValidator/utils/errors"
+	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
 	"strconv"
 )
 

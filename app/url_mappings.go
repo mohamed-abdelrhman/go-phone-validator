@@ -1,6 +1,6 @@
 package app
 
-import "github.com/mohamed-abdelrhman/phoneValidator/controllers"
+import "github.com/mohamed-abdelrhman/go-phone-validator/controllers"
 
 func mapUrls()  {
 	router.GET("/ping", controllers.Ping)

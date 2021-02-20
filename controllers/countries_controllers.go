@@ -2,11 +2,11 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/mohamed-abdelrhman/phoneValidator/domain/countries"
-	"github.com/mohamed-abdelrhman/phoneValidator/services"
-	"github.com/mohamed-abdelrhman/phoneValidator/utils/errors"
-	"github.com/mohamed-abdelrhman/phoneValidator/utils/logger"
-	"github.com/mohamed-abdelrhman/phoneValidator/utils/strings_utils"
+	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/domain/countries"
+	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/services"
+	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
+	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/logger"
+	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/strings_utils"
 	"net/http"
 	"strconv"
 )

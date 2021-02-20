@@ -3,6 +3,7 @@ package sample_db
 import (
 	"database/sql"
 	"encoding/json"
+	_ "github.com/mattn/go-sqlite3" // Import go-sqlite3 library
 	"io/ioutil"
 	"log"
 	"os"
@@ -78,7 +79,6 @@ func createCountriesTable(db *sql.DB) {
 	  );` // SQL Statement for Create Table
 	statement, err := db.Prepare(createCountriesTableSQL) // Prepare SQL Statement
 	if err != nil {
-		log.Println(err.Error())
 		return
 	}
 		statement.Exec() // Execute SQL Statements

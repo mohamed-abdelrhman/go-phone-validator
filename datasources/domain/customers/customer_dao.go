@@ -2,10 +2,9 @@ package customers
 
 import (
 	"database/sql"
-	"github.com/mohamed-abdelrhman/phoneValidator/datasources/sqlite/sample_db"
-	"github.com/mohamed-abdelrhman/phoneValidator/utils/errors"
-	"github.com/mohamed-abdelrhman/phoneValidator/utils/logger"
-	"github.com/mohamed-abdelrhman/phoneValidator/utils/mysql_utils"
+	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/sqlite/sample_db"
+	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
+	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/logger"
 	"strconv"
 )
 
@@ -46,7 +45,8 @@ func (customer *Customer)GetAll(pageNo int64)([]Customer, *errors.RestErr){
 	defer stmt.Close()
 	rows,err:=stmt.Query(pageLimit*(pageNo-1),pageLimit)
 	if err != nil {
-		return nil,mysql_utils.ParseError(err)
+		return nil,errors.NewInternalServerError("Database parsing error")
+
 	}
 	defer rows.Close()
 	results:=make([]Customer,0)
@@ -105,7 +105,7 @@ func (customer *Customer)Filter(filterCustomer FilterCustomer, pageNo int64)([]C
 
 
 	if err != nil {
-		return nil,mysql_utils.ParseError(err)
+		return nil,errors.NewInternalServerError("Database parsing error")
 	}
 	defer rows.Close()
 	results:=make([]Customer,0)

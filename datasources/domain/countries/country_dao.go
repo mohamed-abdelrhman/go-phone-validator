@@ -4,7 +4,6 @@ import (
 	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/sqlite/sample_db"
 	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/errors"
 	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/logger"
-	"github.com/mohamed-abdelrhman/go-phone-validator/datasources/utils/mysql_utils"
 )
 
 const(
@@ -40,7 +39,7 @@ func (country *Country)GetAll(pageNo int64)([]Country, *errors.RestErr){
 	defer stmt.Close()
 	rows,err:=stmt.Query(pageLimit*(pageNo-1),pageLimit)
 	if err != nil {
-		return nil,mysql_utils.ParseError(err)
+		return nil,errors.NewInternalServerError("Database parsing error")
 	}
 	defer rows.Close()
 	results:=make([]Country,0)
